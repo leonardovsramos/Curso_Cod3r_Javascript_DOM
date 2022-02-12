@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #02</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo"><span wb-attrib>.terceiro .ultimo</span></div>
+    <script>              
+        // O querySelector espera um seletor CSS, ou seja, devemos passar qual seletor estamos utilizando, um id (#), uma classe (.) e assim por diante.
+        // Atenção: o comando querySelector e querySelectorAll retorna um objeto do tipo NodeList!
+        // O método forEach existe dentro de objetos NodeList!
+        document.querySelector("#primeiro").classList.add("destaque")
+
+        // Função para adicionar a classe CSS "destaque" nos elementos selecionados pelo querySelectorAll
+        function selecionar(seletorCSS) {
+            document.querySelectorAll(seletorCSS).forEach(
+                el => el.classList.add("destaque")
+            )
+        }
+
+        // Função para remover a classe CSS "destaque" dos elementos selecionados pelo querySelectorAll
+        function desselecionar(seletorCSS) {
+            document.querySelectorAll(seletorCSS).forEach(
+                el => el.classList.remove("destaque")
+            )
+        }
+
+        // Seleciona todos os elementos da tag div e adiciona a classe CSS "destaque"
+        selecionar("div");
+
+        // Desseleciona todos os elementos (*) e remove a classe CSS "destaque"
+        desselecionar("*")
+
+        // Seleciona todos os elementos com class CSS .terceiro.ultimo e adiciona a classe CSS "destaque"
+        selecionar(".terceiro.ultimo")
+
+        desselecionar("*")
+
+        // Seleciona os elementos que não são #primeiro (via id, no caso) e adiciona a class CSS "destaque"
+        selecionar(":not(#primeiro)")
+
+        desselecionar("*")
+
+        // Seleciona o primeiro elemento filho de todos os elementos e adiciona a classe CSS "destaque"
+        // Perceba que caso tenhamos uma div dentro de outra div, a div filha será seleciona já que ela é filha de uma div pai. Além disso, provavelmente, a div pai é a primeira filha da tag body (ou main), portanto, também receberá a classe CSS "destaque"!
+        selecionar(":nth-child(1)")
+
+        desselecionar("*")
+
+        // Seleciona o primeiro elemento filho do tipo div e adiciona a classe CSS "destaque"
+        selecionar("div:nth-of-type(1)")
+
+        desselecionar("*")
+
+        // Seleciona o elemento com um determinado atributo e adiciona a classe CSS "destaque"
+        selecionar("[wb-attrib]")
+
+        desselecionar("*")
+
+        // Atenção: Podemos transformar uma NodeList em Array através dos métodos mostrados no arquivo selecionandoElementos1
+        // Exemplo: Array.from(document.querySelectorAll("div"))
+    </script>
+</body>
+</html>

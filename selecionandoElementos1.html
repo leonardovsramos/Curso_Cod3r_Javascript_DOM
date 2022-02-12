@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #01</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo">.terceiro .ultimo</div>
+    <script>
+        // Retorna o próprio elemento HTML              
+        document.getElementById("primeiro").classList.add("destaque");
+
+        // Retorna um HTMLCollection com todos os elementos que tem a tag "div"
+        // É necessário transformar o HTMLCollection para Array, com isso, podemos utilizar algumas propriedades mais facilmente
+        const divs = document.getElementsByTagName("div");
+
+        // Primeiro Método para transformar um HTMLCollection em Array
+        // Inteiramos sobre o array através do operador forEach()
+        const divsArray01 = Array.from(divs).forEach(el => el.classList.remove("destaque"));
+
+        // Segundo Método para transformar um HTMLCollection em Array
+        // Utilizamos o operador spread e inteiramos sobre o array através do operador Foreach()
+        const divsArray02 = [...divs]
+        divsArray02.forEach(el => el.classList.add("destaque"));
+
+        // Terceiro Método para transformar um HTMLCollection em Array
+        // Utilizamos o for inteirando sobre  o HTMLCollection e com isso, conseguimos adicionar ou remover classes, por exemplo!
+        for (let el of divs) {
+            el.classList.remove("destaque")
+        }
+
+        // Retorna um HTMLCollection com todos os elementos que contém a classe "ultimo"
+        // É necessário transformar o HTMLCollection para Array, com isso, podemos utilizar algumas propriedades mais facilmente
+        const ultimosElementos = document.getElementsByClassName("ultimo");
+        for (let el of ultimosElementos) {
+            el.classList.add("destaque")
+        }
+    </script>
+</body>
+</html>

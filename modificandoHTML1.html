@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <script>
+        const body = document.querySelector("body");
+
+        // Criação de elementos HTML através de Javascript
+        // É necessário passar o tipo de elemento que estamos querendo criar
+        const div1 = document.createElement("div");
+
+        // Adição de uma classe ao mais novo elemento criado
+        div1.classList.add("destaque")
+
+        // Adição de conteúdo ao mais novo elemento criado
+        div1.innerHTML = "Primeiro"
+
+        //Criando de elemento HTML através de Javascript
+        const div2 = document.createElement("div")
+        div2.setAttribute("wm-atributo", "valor")
+        div2.innerHTML = "Segundo"
+
+        const p = document.createElement("p")
+        p.innerHTML = "Terceiro"
+        const div3 = document.createElement("div")
+        // Inserção de elemento p (por último) no elemento pai div3
+        div3.appendChild(p)
+
+        // Inserindo elementos criados com Javascript no Body através do appendChild
+        body.appendChild(div1)
+        body.appendChild(div2)
+        body.appendChild(div3)
+
+        const texto = document.createTextNode("Antes...")
+        div3.insertBefore(texto, div3.childNodes[0])
+
+        const div4 = div3.cloneNode(true)
+
+        body.appendChild(div4)
+        body.removeChild(div3)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #03</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        form input,
+        form select,
+        form button {
+            margin: 10px;
+            font-size: 1.6em;
+        }
+    </style>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Formulário</h1>
+    <form method="get" name="pesquisa" action="http://www.google.com.br/search">
+        <input type="text" name="q" placeholder="Digite o termo...">
+        <select name="hl">
+            <option value="pt-br">Português (Brasil)</option>
+            <option value="en-us">Inglês (Americano)</option>
+        </select>
+        <button>Pesquisar</button>
+    </form>
+    <script>
+        // Podemos acessar as informações do formulário utilizando document.forms
+        console.log(document.forms)
+
+        // Podemos acessar os elementos do formulário utilizando document.forms[index]
+        console.log(document.forms[0])
+
+        // Podemos utilizar o atributo name para recuperar os campos de formulários e seus input's
+        // Atenção: o comando document.getElementsByName("name") retorna um NodeList, portanto, devemos utilizar os métodos corretos e suportados pelo NodeList
+        // Não recomendado
+        console.log(document.getElementsByName("pesquisa"))
+
+        // Podemos utilizar o comando document."name" sem aspas, para retornar o form ou input com este nome
+        // É um método mais recomendado
+        console.log(document.pesquisa)
+
+        // Podemos utilizar o comando document."name" sem aspas, para retornar o form ou input com este nome
+        // É um método mais recomendado
+        console.log(document.pesquisa.q)
+        console.log(document.pesquisa.hl)
+
+        // Podemos alterar propriedades de elementos utilizando o document."name" sem aspas, assim como será feito abaixo!
+        document.pesquisa.q.value = "Linux Brasil"
+        document.pesquisa.hl.value = "pt-br"
+
+        // Retorna o index que está selecionado no select
+        console.log(document.pesquisa.hl.selectedIndex)
+    </script>
+</body>
+
+</html>
